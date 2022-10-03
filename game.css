@@ -4,24 +4,37 @@
 
 .board {
   display: grid;
-  height: 550px;
-  width: 550px;
+  height: 650px;
+  width: 650px;
   grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   background-color: rgb(118, 183, 26);
 }
 
 .square {
-  background-color: rgb(0, 132, 255);
+  background-color: rgb(162, 78, 0);
   border: 1px solid black;
 }
 
 .player1 {
-  background-color: red;
+  background-image: url(https://imgur.com/5jsDmrk.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .player2 {
-  background-color: yellow;
+  background-image: url(https://imgur.com/0ibGwVo.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.player1.player2 {
+  background-image: url(https://imgur.com/z7IzaB1.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #sq0 {

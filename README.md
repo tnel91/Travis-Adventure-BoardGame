@@ -77,3 +77,5 @@ Movement will be determined by dice roll, and events will be triggered by player
 ##### Markdown Guide: [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
 
 ##### VS Code Editing Guide [Basic Editing](https://code.visualstudio.com/docs/editor/codebasics)
+
+##### Clip Art Images [ClipArtMax](https://www.clipartmax.com/)
