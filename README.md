@@ -75,3 +75,5 @@ Movement will be determined by dice roll, and events will be triggered by player
 ##### Project Prompt: [Github](https://github.com/SEI-R-9-19/u1_project_prompt)
 
 ##### Markdown Guide: [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+
+##### VS Code Editing Guide [Basic Editing](https://code.visualstudio.com/docs/editor/codebasics)
