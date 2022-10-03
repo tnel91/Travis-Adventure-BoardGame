@@ -1,8 +1,9 @@
 // Global Variables
 
-let currentPlayerTurn = -1
+let currentPlayerTurn = 1
 const player1Name = `Zazu`
 const player2Name = `Gumby`
+const button = document.querySelector(`button`)
 
 // Dice Rolls
 
@@ -108,4 +109,11 @@ const startTurn = () => {
   }
 }
 
-const checkSpace = () => {}
+const checkSpace = (space) => {
+  console.log(`the player is on space ${space}`)
+  currentPlayerTurn = currentPlayerTurn * -1
+}
+
+// Event Listeners
+
+button.addEventListener(`click`, startTurn)
