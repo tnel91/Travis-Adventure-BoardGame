@@ -1,0 +1,57 @@
+.game {
+  display: flex;
+}
+
+.board {
+  display: grid;
+  height: 500px;
+  width: 500px;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  background-color: rgba(11, 11, 207, 0.551);
+}
+
+.square {
+  background-color: red;
+  border: 1px solid black;
+}
+
+#sq0 {
+  grid-column-start: 2;
+  grid-row-start: 5;
+}
+
+#sq1{
+  grid-column-start: 2;
+  grid-row-start: 4;
+}
+
+#sq2{
+  grid-column-start: 3;
+  grid-row-start: 4;
+}
+
+#sq3{
+  grid-column-start: 4;
+  grid-row-start: 4;
+}
+
+#sq4{
+  grid-column-start: 4;
+  grid-row-start: 3;
+}
+
+#sq5{
+  grid-column-start: 4;
+  grid-row-start: 2;
+}
+
+#sq6{
+  grid-column-start: 3;
+  grid-row-start: 2;
+}
+
+#sq7{
+  grid-column-start: 3;
+  grid-row-start: 1;
+}
