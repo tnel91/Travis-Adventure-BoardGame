@@ -65,6 +65,7 @@ class Player {
     this.health = 100
     this.gold = 100
     this.extraRoll = false
+    this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
   }
   roll(dice, num) {
     if (dice === d4) {
@@ -96,7 +97,10 @@ const startTurn = () => {
     } else {
       player1.roll(d10, 1)
     }
+    player1.spaceDiv.classList.remove(`player1`)
     player1.currentSpace += player1.currentRoll
+    player1.spaceDiv = document.getElementById(`sq${player1.currentSpace}`)
+    player1.spaceDiv.classList.add(`player1`)
     checkSpace(player1.currentSpace)
   } else if (currentPlayerTurn === -1) {
     if (player2.extraRoll === true) {
@@ -104,7 +108,10 @@ const startTurn = () => {
     } else {
       player2.roll(d10, 1)
     }
+    player2.spaceDiv.classList.remove(`player2`)
     player2.currentSpace += player2.currentRoll
+    player2.spaceDiv = document.getElementById(`sq${player2.currentSpace}`)
+    player2.spaceDiv.classList.add(`player2`)
     checkSpace(player2.currentSpace)
   }
 }

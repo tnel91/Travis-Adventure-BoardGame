@@ -16,6 +16,14 @@
   border: 1px solid black;
 }
 
+.player1 {
+  background-color: red;
+}
+
+.player2 {
+  background-color: yellow;
+}
+
 #sq0 {
   grid-column-start: 4;
   grid-row-start: 20;
