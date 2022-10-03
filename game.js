@@ -1,4 +1,10 @@
-//Dice Rolls
+// Global Variables
+
+let currentPlayerTurn = -1
+const player1Name = `Zazu`
+const player2Name = `Gumby`
+
+// Dice Rolls
 
 const d4 = (num) => {
   let rollResult = 0
@@ -48,7 +54,7 @@ const d20 = (num) => {
   return rollResult
 }
 
-//Objects
+// Objects/Classes
 
 class Player {
   constructor(name) {
@@ -57,6 +63,7 @@ class Player {
     this.currentRoll = 0
     this.health = 100
     this.gold = 100
+    this.extraRoll = false
   }
   roll(dice, num) {
     if (dice === d4) {
@@ -76,7 +83,29 @@ class Player {
   }
 }
 
-const player1 = new Player(`Steve`)
-console.log(`${player1.name}'s current roll is ${player1.currentRoll}.`)
-player1.roll(d10, 3)
-console.log(`${player1.name}'s current roll is ${player1.currentRoll}.`)
+const player1 = new Player(player1Name)
+const player2 = new Player(player2Name)
+
+// Game Functions
+
+const startTurn = () => {
+  if (currentPlayerTurn === 1) {
+    if (player1.extraRoll === true) {
+      player1.roll(d10, 2)
+    } else {
+      player1.roll(d10, 1)
+    }
+    player1.currentSpace += player1.currentRoll
+    checkSpace(player1.currentSpace)
+  } else if (currentPlayerTurn === -1) {
+    if (player2.extraRoll === true) {
+      player2.roll(d10, 2)
+    } else {
+      player2.roll(d10, 1)
+    }
+    player2.currentSpace += player2.currentRoll
+    checkSpace(player2.currentSpace)
+  }
+}
+
+const checkSpace = () => {}
