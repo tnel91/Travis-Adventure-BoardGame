@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.events {
+  background-color: aqua;
+}
+
 .board {
   display: grid;
   height: 550px;

@@ -3,8 +3,12 @@
 let currentPlayerTurn = 1
 const player1Name = `Zazu`
 const player2Name = `Gumby`
-const button = document.querySelector(`button`)
 const enemyArr = []
+const turnStart = document.getElementById(`startButton`)
+const weapon0 = document.getElementById(`weapon0`)
+const weapon1 = document.getElementById(`weapon1`)
+const weapon2 = document.getElementById(`weapon2`)
+const weapon3 = document.getElementById(`weapon3`)
 
 // Weapons
 
@@ -29,7 +33,7 @@ class Player {
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
     this.inventory = []
-    this.weapons = [ironSword]
+    this.weapons = [ironSword, `Empty1`, `Empty2`, `Empty3`]
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -58,6 +62,7 @@ class Enemy {
   constructor(name, health, mult) {
     this.name = name
     this.health = health
+    this.fullHealth = health
     this.currentRoll = 0
     this.mult = mult
   }
@@ -93,6 +98,8 @@ class Undead extends Enemy {
   }
 }
 
+// Constructors
+
 const player1 = new Player(player1Name, `player1`)
 const player2 = new Player(player2Name, `player2`)
 
@@ -100,6 +107,8 @@ const zombie = new Undead(`Zombie`, 10, 1)
 enemyArr.push(zombie)
 const mummy = new Undead(`Mummy`, 15, 1.2)
 enemyArr.push(mummy)
+const ghoul = new Undead(`Ghoul`, 20, 1.5)
+enemyArr.push(ghoul)
 
 // Game Functions
 
@@ -139,9 +148,16 @@ const gameWin = (player) => {
   flipTurn()
 }
 
+const equipWeap = (player) => {
+  let splice = player.weapons.splice(1, 1)
+  player.weapons.splice(0, 0, splice[0])
+}
+
+equipWeap(player1)
+
 // Event Listeners
 
-button.addEventListener(`click`, startTurn)
+turnStart.addEventListener(`click`, startTurn)
 
 // Space Event Logic
 
@@ -164,7 +180,8 @@ const randomFight = (player) => {
   let randomIndex = Math.floor(Math.random() * enemyArr.length)
   let opponent = enemyArr[randomIndex]
   console.log(`${player.name} will be fighting ${opponent.name}`)
-  player.attack(opponent, ironSword)
+  player.attack(opponent, player.weapons[0])
   opponent.attack(player)
+  opponent.health = opponent.fullHealth
   flipTurn()
 }
