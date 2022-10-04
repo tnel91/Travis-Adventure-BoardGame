@@ -4,6 +4,17 @@ let currentPlayerTurn = 1
 const player1Name = `Zazu`
 const player2Name = `Gumby`
 const button = document.querySelector(`button`)
+const enemyArr = []
+
+// Weapons
+
+const ironSword = {
+  name: `Iron Sword`,
+  diceType: 4,
+  diceNum: 1
+}
+
+// Inventory Items
 
 // Classes
 
@@ -44,18 +55,18 @@ class Player {
 }
 
 class Enemy {
-  constructor(name) {
+  constructor(name, health) {
     this.name = name
-    this.health = 100
+    this.health = health
   }
   announceHealth() {
     console.log(`${this.name} has ${this.health} health.`)
   }
 }
 
-class Zombie extends Enemy {
-  constructor(name) {
-    super(name)
+class Undead extends Enemy {
+  constructor(name, health) {
+    super(name, health)
     this.attacks = [{}, {}]
   }
 }
@@ -63,15 +74,10 @@ class Zombie extends Enemy {
 const player1 = new Player(player1Name, `player1`)
 const player2 = new Player(player2Name, `player2`)
 
-// Weapons
-
-const ironSword = {
-  name: `Iron Sword`,
-  diceType: 4,
-  diceNum: 1
-}
-
-// Inventory Items
+const zombie = new Undead(`Zombie`, 10)
+enemyArr.push(zombie)
+const mummy = new Undead(`Mummy`, 15)
+enemyArr.push(mummy)
 
 // Game Functions
 
@@ -90,7 +96,7 @@ const rollToMove = (player) => {
   if (player.extraRoll === true) {
     player.roll(10, 2)
   } else {
-    player.roll(10, 1)
+    player.roll(4, 1)
   }
   player.spaceDiv.classList.remove(`${player.divClass}`)
   player.currentSpace += player.currentRoll
@@ -129,9 +135,12 @@ const shop = (player) => {
   flipTurn()
 }
 
-const fight = (player) => {
+const randomFight = (player) => {
   console.log(
     `${player.name} is looking for a fight! They have ${player.health} health.`
   )
+  let randomIndex = Math.floor(Math.random() * enemyArr.length)
+  let chosEnemy = enemyArr[randomIndex]
+  player.attack(chosEnemy, ironSword)
   flipTurn()
 }

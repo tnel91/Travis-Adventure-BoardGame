@@ -26,30 +26,30 @@ const boardArr = [
   },
   {
     index: 4,
-    type: `fight`,
+    type: `random fight`,
     run: function (player) {
-      fight(player)
+      randomFight(player)
     }
   },
   {
     index: 5,
-    type: `empty`,
+    type: `random fight`,
     run: function (player) {
-      emptySpace(player)
+      randomFight(player)
     }
   },
   {
     index: 6,
-    type: `empty`,
+    type: `random fight`,
     run: function (player) {
-      emptySpace(player)
+      randomFight(player)
     }
   },
   {
     index: 7,
-    type: `empty`,
+    type: `random fight`,
     run: function (player) {
-      emptySpace(player)
+      randomFight(player)
     }
   },
   {
