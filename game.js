@@ -9,8 +9,15 @@ const weapon0 = document.getElementById(`weapon0`)
 const weapon1 = document.getElementById(`weapon1`)
 const weapon2 = document.getElementById(`weapon2`)
 const weapon3 = document.getElementById(`weapon3`)
+const turnInd = document.getElementById(`turnInd`)
 
 // Weapons
+
+const unarmed = {
+  name: `Unarmed`,
+  diceType: 2,
+  diceNum: 1
+}
 
 const ironSword = {
   name: `Iron Sword`,
@@ -33,7 +40,7 @@ class Player {
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
     this.inventory = []
-    this.weapons = [ironSword, `Empty1`, `Empty2`, `Empty3`]
+    this.weapons = [ironSword, unarmed, unarmed, unarmed]
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -112,9 +119,23 @@ enemyArr.push(ghoul)
 
 // Game Functions
 
+const init = (player) => {
+  turnInd.innerText = `${player.name}'s Turn!`
+  weapon0.innerText = player.weapons[0].name
+  weapon1.innerText = player.weapons[1].name
+  weapon2.innerText = player.weapons[2].name
+  weapon3.innerText = player.weapons[3].name
+}
+
 const flipTurn = () => {
   currentPlayerTurn = currentPlayerTurn * -1
+  if (currentPlayerTurn === 1) {
+    init(player1)
+  } else if (currentPlayerTurn === -1) {
+    init(player2)
+  }
 }
+
 const startTurn = () => {
   if (currentPlayerTurn === 1) {
     rollToMove(player1)
@@ -153,13 +174,15 @@ const equipWeap = (player) => {
   player.weapons.splice(0, 0, splice[0])
 }
 
-equipWeap(player1)
-
 // Event Listeners
 
 turnStart.addEventListener(`click`, startTurn)
 
+// weapon1.addEventListener(`click`)
+
 // Space Event Logic
+
+init(player1)
 
 const emptySpace = (player) => {
   console.log(`${player.name} is in an empty space.`)
