@@ -51,14 +51,25 @@ const rollToMove = (player) => {
   if (player.extraRoll === true) {
     player.roll(10, 2)
   } else {
-    player.roll(4, 1)
+    player.roll(10, 1)
   }
   player.spaceDiv.classList.remove(`${player.divClass}`)
   player.currentSpace += player.currentRoll
   console.log(`${player.name} is on ${player.currentSpace}.`)
-  player.spaceDiv = document.getElementById(`sq${player.currentSpace}`)
-  player.spaceDiv.classList.add(`${player.divClass}`)
-  boardArr[player.currentSpace].run(player)
+  if (player.currentSpace >= boardArr.length - 1) {
+    player.spaceDiv = document.getElementById(`sq${boardArr.length - 1}`)
+    player.spaceDiv.classList.add(`${player.divClass}`)
+    gameWin(player)
+  } else {
+    player.spaceDiv = document.getElementById(`sq${player.currentSpace}`)
+    player.spaceDiv.classList.add(`${player.divClass}`)
+    boardArr[player.currentSpace].run(player)
+  }
+}
+
+const gameWin = (player) => {
+  console.log(`${player.name} has won the game!`)
+  flipTurn()
 }
 
 // Event Listeners
@@ -85,5 +96,3 @@ const fight = (player) => {
   )
   flipTurn()
 }
-
-// Board Space Array
