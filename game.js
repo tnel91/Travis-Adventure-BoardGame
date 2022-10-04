@@ -10,6 +10,7 @@ const weapon1 = document.getElementById(`weapon1`)
 const weapon2 = document.getElementById(`weapon2`)
 const weapon3 = document.getElementById(`weapon3`)
 const turnInd = document.getElementById(`turnInd`)
+const gameText = document.getElementById(`gameText`)
 
 // Weapons
 
@@ -76,7 +77,7 @@ class Player {
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
     this.inventory = []
-    this.weapons = [ironSword, silverSword, magicMissle, fireball]
+    this.weapons = [ironSword, unarmed, unarmed, unarmed]
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -122,12 +123,6 @@ class Enemy {
     this.roll(chosAttack.diceType, chosAttack.diceNum)
     let damage = Math.floor(this.currentRoll * this.mult)
     opponent.health -= damage
-    console.log(
-      `${this.name} has attacked ${opponent.name} with ${chosAttack.name} for ${damage} damage!`
-    )
-  }
-  announceHealth() {
-    console.log(`${this.name} has ${this.health} health.`)
   }
 }
 
@@ -157,7 +152,7 @@ enemyArr.push(ghoul)
 
 const init = (player) => {
   turnInd.innerText = `${player.name}'s Turn!`
-  weapon0.innerText = player.weapons[0].name
+  weapon0.innerText = `Equipped Weapon: ${player.weapons[0].name} (Rolls ${player.weapons[0].diceNum} x d${player.weapons[0].diceType})`
   weapon1.innerText = player.weapons[1].name
   weapon2.innerText = player.weapons[2].name
   weapon3.innerText = player.weapons[3].name
@@ -254,12 +249,10 @@ const shop = (player) => {
 }
 
 const randomFight = (player) => {
-  console.log(
-    `${player.name} is looking for a fight! They have ${player.health} health.`
-  )
   let randomIndex = Math.floor(Math.random() * enemyArr.length)
   let opponent = enemyArr[randomIndex]
-  console.log(`${player.name} will be fighting ${opponent.name}`)
+  gameText.innerText = `${player.name} has encountered a ${opponent.name}! Prepare to fight!`
+  ////
   player.attack(opponent, player.weapons[0])
   opponent.attack(player)
   opponent.health = opponent.fullHealth
