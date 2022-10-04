@@ -94,6 +94,10 @@ const player2 = new Player(player2Name)
 
 // Game Functions
 
+const flipTurn = () => {
+  currentPlayerTurn = currentPlayerTurn * -1
+}
+
 const startTurn = () => {
   if (currentPlayerTurn === 1) {
     if (player1.extraRoll === true) {
@@ -105,7 +109,6 @@ const startTurn = () => {
     player1.currentSpace += player1.currentRoll
     player1.spaceDiv = document.getElementById(`sq${player1.currentSpace}`)
     player1.spaceDiv.classList.add(`player1`)
-    console.log(`${player1.name} is on space ${player1.currentSpace}.`)
     spaceArr[player1.currentSpace].run(player1)
   } else if (currentPlayerTurn === -1) {
     if (player2.extraRoll === true) {
@@ -117,7 +120,6 @@ const startTurn = () => {
     player2.currentSpace += player2.currentRoll
     player2.spaceDiv = document.getElementById(`sq${player2.currentSpace}`)
     player2.spaceDiv.classList.add(`player2`)
-    console.log(`${player2.name} is on space ${player2.currentSpace}.`)
     spaceArr[player2.currentSpace].run(player2)
   }
 }
@@ -126,12 +128,28 @@ const startTurn = () => {
 
 button.addEventListener(`click`, startTurn)
 
-// Board Space Array
+// Space event logic
 
-const emptySpace = (name) => {
-  console.log(`${name} is in an empty space.`)
-  currentPlayerTurn = currentPlayerTurn * -1
+const emptySpace = (player) => {
+  console.log(`${player.name} is in an empty space.`)
+  flipTurn()
 }
+
+const shop = (player) => {
+  console.log(
+    `${player.name} is going shopping! They have ${player.gold} gold.`
+  )
+  flipTurn()
+}
+
+const fight = (player) => {
+  console.log(
+    `${player.name} is looking for a fight! They have ${player.health} health.`
+  )
+  flipTurn()
+}
+
+// Board Space Array
 
 const spaceArr = [
   {
@@ -142,28 +160,28 @@ const spaceArr = [
     index: 1,
     type: `empty`,
     run: function (player) {
-      emptySpace(player.name)
+      emptySpace(player)
     }
   },
   {
     index: 2,
     type: `empty`,
     run: function (player) {
-      emptySpace(player.name)
+      emptySpace(player)
     }
   },
   {
     index: 3,
-    type: `empty`,
+    type: `shop`,
     run: function (player) {
-      emptySpace(player.name)
+      shop(player)
     }
   },
   {
     index: 4,
-    type: `empty`,
+    type: `fight`,
     run: function (player) {
-      emptySpace(player.name)
+      fight(player)
     }
   }
 ]
