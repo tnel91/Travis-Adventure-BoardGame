@@ -21,8 +21,44 @@ const unarmed = {
 
 const ironSword = {
   name: `Iron Sword`,
-  diceType: 4,
+  diceType: 6,
   diceNum: 1
+}
+
+const silverSword = {
+  name: `Silver Sword`,
+  diceType: 6,
+  diceNum: 1
+}
+
+const twinDaggers = {
+  name: `Twin Daggers`,
+  diceType: 4,
+  diceNum: 2
+}
+
+const greatSword = {
+  name: `Greatsword`,
+  diceType: 12,
+  diceNum: 1
+}
+
+const magicMissle = {
+  name: `Magic Missle`,
+  diceType: 4,
+  diceNum: 3
+}
+
+const fireball = {
+  name: `Fireball`,
+  diceType: 10,
+  diceNum: 2
+}
+
+const explosion = {
+  name: `Explosion`,
+  diceType: 20,
+  diceNum: 2
 }
 
 // Inventory Items
@@ -40,7 +76,7 @@ class Player {
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
     this.inventory = []
-    this.weapons = [ironSword, unarmed, unarmed, unarmed]
+    this.weapons = [ironSword, silverSword, magicMissle, fireball]
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -136,14 +172,6 @@ const flipTurn = () => {
   }
 }
 
-const startTurn = () => {
-  if (currentPlayerTurn === 1) {
-    rollToMove(player1)
-  } else if (currentPlayerTurn === -1) {
-    rollToMove(player2)
-  }
-}
-
 const rollToMove = (player) => {
   if (player.extraRoll === true) {
     player.roll(10, 2)
@@ -169,16 +197,45 @@ const gameWin = (player) => {
   flipTurn()
 }
 
-const equipWeap = (player) => {
-  let splice = player.weapons.splice(1, 1)
+const equip = (player, i) => {
+  let splice = player.weapons.splice(i, 1)
   player.weapons.splice(0, 0, splice[0])
+  init(player)
 }
 
 // Event Listeners
 
-turnStart.addEventListener(`click`, startTurn)
+turnStart.addEventListener(`click`, () => {
+  if (currentPlayerTurn === 1) {
+    rollToMove(player1)
+  } else if (currentPlayerTurn === -1) {
+    rollToMove(player2)
+  }
+})
 
-// weapon1.addEventListener(`click`)
+weapon1.addEventListener(`click`, () => {
+  if (currentPlayerTurn === 1) {
+    equip(player1, 1)
+  } else if (currentPlayerTurn === -1) {
+    equip(player2, 1)
+  }
+})
+
+weapon2.addEventListener(`click`, () => {
+  if (currentPlayerTurn === 1) {
+    equip(player1, 2)
+  } else if (currentPlayerTurn === -1) {
+    equip(player2, 2)
+  }
+})
+
+weapon3.addEventListener(`click`, () => {
+  if (currentPlayerTurn === 1) {
+    equip(player1, 3)
+  } else if (currentPlayerTurn === -1) {
+    equip(player2, 3)
+  }
+})
 
 // Space Event Logic
 
