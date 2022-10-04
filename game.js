@@ -48,16 +48,35 @@ class Player {
     this.roll(weapon.diceType, weapon.diceNum)
     opponent.health -= this.currentRoll
     console.log(
-      `${this.name} has attacked ${opponent.name} for ${this.currentRoll} damage!`
+      `${this.name} has attacked ${opponent.name} with ${weapon.name} for ${this.currentRoll} damage!`
     )
     console.log(`${opponent.name} now has ${opponent.health} health.`)
   }
 }
 
 class Enemy {
-  constructor(name, health) {
+  constructor(name, health, mult) {
     this.name = name
     this.health = health
+    this.currentRoll = 0
+    this.mult = mult
+  }
+  roll(dice, num) {
+    this.currentRoll = 0
+    for (let i = 0; i < num; i++) {
+      this.currentRoll += Math.ceil(Math.random() * dice)
+    }
+    console.log(`${this.name} rolled a ${this.currentRoll}`)
+  }
+  attack(opponent) {
+    let randomIndex = Math.floor(Math.random() * this.attacks.length)
+    let chosAttack = this.attacks[randomIndex]
+    this.roll(chosAttack.diceType, chosAttack.diceNum)
+    let damage = Math.floor(this.currentRoll * this.mult)
+    opponent.health -= damage
+    console.log(
+      `${this.name} has attacked ${opponent.name} with ${chosAttack.name} for ${damage} damage!`
+    )
   }
   announceHealth() {
     console.log(`${this.name} has ${this.health} health.`)
@@ -65,18 +84,21 @@ class Enemy {
 }
 
 class Undead extends Enemy {
-  constructor(name, health) {
-    super(name, health)
-    this.attacks = [{}, {}]
+  constructor(name, health, mult) {
+    super(name, health, mult)
+    this.attacks = [
+      { name: `scratch`, diceType: 4, diceNum: 1 },
+      { name: `bite`, diceType: 6, diceNum: 1 }
+    ]
   }
 }
 
 const player1 = new Player(player1Name, `player1`)
 const player2 = new Player(player2Name, `player2`)
 
-const zombie = new Undead(`Zombie`, 10)
+const zombie = new Undead(`Zombie`, 10, 1)
 enemyArr.push(zombie)
-const mummy = new Undead(`Mummy`, 15)
+const mummy = new Undead(`Mummy`, 15, 1.2)
 enemyArr.push(mummy)
 
 // Game Functions
@@ -140,7 +162,9 @@ const randomFight = (player) => {
     `${player.name} is looking for a fight! They have ${player.health} health.`
   )
   let randomIndex = Math.floor(Math.random() * enemyArr.length)
-  let chosEnemy = enemyArr[randomIndex]
-  player.attack(chosEnemy, ironSword)
+  let opponent = enemyArr[randomIndex]
+  console.log(`${player.name} will be fighting ${opponent.name}`)
+  player.attack(opponent, ironSword)
+  opponent.attack(player)
   flipTurn()
 }
