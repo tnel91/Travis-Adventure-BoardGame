@@ -17,7 +17,8 @@ class Player {
     this.extraRoll = false
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
-    this.inventory = [ironSword]
+    this.inventory = []
+    this.weapons = [ironSword]
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -29,8 +30,16 @@ class Player {
   pickupItem(item) {
     this.inventory.push(item)
   }
-  attack(weapon) {
-    this.weapon.attack()
+  pickupWeapon(weapon) {
+    this.weapons.push(weapon)
+  }
+  attack(opponent, weapon) {
+    this.roll(weapon.diceType, weapon.diceNum)
+    opponent.health -= this.currentRoll
+    console.log(
+      `${this.name} has attacked ${opponent.name} for ${this.currentRoll} damage!`
+    )
+    console.log(`${opponent.name} now has ${opponent.health} health.`)
   }
 }
 
@@ -54,14 +63,15 @@ class Zombie extends Enemy {
 const player1 = new Player(player1Name, `player1`)
 const player2 = new Player(player2Name, `player2`)
 
-// Items
+// Weapons
 
 const ironSword = {
   name: `Iron Sword`,
-  attack: function () {
-    this.currentRoll
-  }
+  diceType: 4,
+  diceNum: 1
 }
+
+// Inventory Items
 
 // Game Functions
 
