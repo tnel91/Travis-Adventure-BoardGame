@@ -66,6 +66,7 @@ class Player {
     this.gold = 100
     this.extraRoll = false
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
+    this.inventory = []
   }
   roll(dice, num) {
     if (dice === d4) {
@@ -83,6 +84,9 @@ class Player {
     }
     console.log(`${this.name} rolled a ${this.currentRoll}`)
   }
+  pickupItem(item) {
+    this.inventory.push(item)
+  }
 }
 
 const player1 = new Player(player1Name)
@@ -95,32 +99,71 @@ const startTurn = () => {
     if (player1.extraRoll === true) {
       player1.roll(d10, 2)
     } else {
-      player1.roll(d10, 1)
+      player1.roll(d4, 1)
     }
     player1.spaceDiv.classList.remove(`player1`)
     player1.currentSpace += player1.currentRoll
     player1.spaceDiv = document.getElementById(`sq${player1.currentSpace}`)
     player1.spaceDiv.classList.add(`player1`)
-    checkSpace(player1.currentSpace)
+    console.log(`${player1.name} is on space ${player1.currentSpace}.`)
+    spaceArr[player1.currentSpace].run(player1)
   } else if (currentPlayerTurn === -1) {
     if (player2.extraRoll === true) {
       player2.roll(d10, 2)
     } else {
-      player2.roll(d10, 1)
+      player2.roll(d4, 1)
     }
     player2.spaceDiv.classList.remove(`player2`)
     player2.currentSpace += player2.currentRoll
     player2.spaceDiv = document.getElementById(`sq${player2.currentSpace}`)
     player2.spaceDiv.classList.add(`player2`)
-    checkSpace(player2.currentSpace)
+    console.log(`${player2.name} is on space ${player2.currentSpace}.`)
+    spaceArr[player2.currentSpace].run(player2)
   }
-}
-
-const checkSpace = (space) => {
-  console.log(`the player is on space ${space}`)
-  currentPlayerTurn = currentPlayerTurn * -1
 }
 
 // Event Listeners
 
 button.addEventListener(`click`, startTurn)
+
+// Board Space Array
+
+const emptySpace = (name) => {
+  console.log(`${name} is in an empty space.`)
+  currentPlayerTurn = currentPlayerTurn * -1
+}
+
+const spaceArr = [
+  {
+    index: 0,
+    type: `start`
+  },
+  {
+    index: 1,
+    type: `empty`,
+    run: function (player) {
+      emptySpace(player.name)
+    }
+  },
+  {
+    index: 2,
+    type: `empty`,
+    run: function (player) {
+      emptySpace(player.name)
+    }
+  },
+  {
+    index: 3,
+    type: `empty`,
+    run: function (player) {
+      emptySpace(player.name)
+    }
+  },
+  {
+    index: 4,
+    type: `empty`,
+    run: function (player) {
+      emptySpace(player.name)
+    }
+  }
+]

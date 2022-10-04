@@ -79,3 +79,7 @@ Movement will be determined by dice roll, and events will be triggered by player
 ##### VS Code Editing Guide [Basic Editing](https://code.visualstudio.com/docs/editor/codebasics)
 
 ##### Clip Art Images [ClipArtMax](https://www.clipartmax.com/)
+
+##### Image Editing [Gimp](https://www.gimp.org/)
+
+##### Image Hosting [Imgur](https://imgur.com/)

@@ -4,8 +4,8 @@
 
 .board {
   display: grid;
-  height: 650px;
-  width: 650px;
+  height: 550px;
+  width: 550px;
   grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   background-color: rgb(118, 183, 26);
