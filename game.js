@@ -5,7 +5,7 @@ const player1Name = `Zazu`
 const player2Name = `Gumby`
 const button = document.querySelector(`button`)
 
-// Objects/Classes
+// Classes
 
 class Player {
   constructor(name, divClass) {
@@ -17,7 +17,7 @@ class Player {
     this.extraRoll = false
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
-    this.inventory = []
+    this.inventory = [ironSword]
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -29,10 +29,39 @@ class Player {
   pickupItem(item) {
     this.inventory.push(item)
   }
+  attack(weapon) {
+    this.weapon.attack()
+  }
+}
+
+class Enemy {
+  constructor(name) {
+    this.name = name
+    this.health = 100
+  }
+  announceHealth() {
+    console.log(`${this.name} has ${this.health} health.`)
+  }
+}
+
+class Zombie extends Enemy {
+  constructor(name) {
+    super(name)
+    this.attacks = [{}, {}]
+  }
 }
 
 const player1 = new Player(player1Name, `player1`)
 const player2 = new Player(player2Name, `player2`)
+
+// Items
+
+const ironSword = {
+  name: `Iron Sword`,
+  attack: function () {
+    this.currentRoll
+  }
+}
 
 // Game Functions
 
@@ -76,7 +105,7 @@ const gameWin = (player) => {
 
 button.addEventListener(`click`, startTurn)
 
-// Space event logic
+// Space Event Logic
 
 const emptySpace = (player) => {
   console.log(`${player.name} is in an empty space.`)
