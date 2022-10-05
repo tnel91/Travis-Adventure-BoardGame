@@ -1,8 +1,8 @@
 // Global Variables
 
 let currentPlayerTurn = 1
-const player1Name = `Zazu`
-const player2Name = `Gumby`
+const p1Name = `Zazu`
+const p2Name = `Gumby`
 const enemyArr = []
 const start = document.getElementById(`startButton`)
 const atkBut = document.getElementById(`attackButton`)
@@ -142,8 +142,8 @@ class Undead extends Enemy {
 
 // Constructors
 
-const player1 = new Player(player1Name, `player1`)
-const player2 = new Player(player2Name, `player2`)
+const player1 = new Player(p1Name, `player1`)
+const player2 = new Player(p2Name, `player2`)
 
 const zombie = new Undead(`Zombie`, 10, 1)
 enemyArr.push(zombie)
