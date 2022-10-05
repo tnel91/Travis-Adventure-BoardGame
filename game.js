@@ -4,13 +4,14 @@ let currentPlayerTurn = 1
 const player1Name = `Zazu`
 const player2Name = `Gumby`
 const enemyArr = []
-const turnStart = document.getElementById(`startButton`)
+const start = document.getElementById(`startButton`)
 const weapon0 = document.getElementById(`weapon0`)
 const weapon1 = document.getElementById(`weapon1`)
 const weapon2 = document.getElementById(`weapon2`)
 const weapon3 = document.getElementById(`weapon3`)
 const turnInd = document.getElementById(`turnInd`)
 const gameText = document.getElementById(`gameText`)
+const healthBar = document.getElementById(`health`)
 
 // Weapons
 
@@ -33,7 +34,7 @@ const silverSword = {
 }
 
 const twinDaggers = {
-  name: `Twin Daggers`,
+  name: `Pair of Daggers`,
   diceType: 4,
   diceNum: 2
 }
@@ -72,7 +73,9 @@ class Player {
     this.currentSpace = 0
     this.currentRoll = 0
     this.health = 100
+    this.fullHealth = 100
     this.gold = 100
+    this.outGoingDam = 0
     this.extraRoll = false
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
@@ -94,11 +97,8 @@ class Player {
   }
   attack(opponent, weapon) {
     this.roll(weapon.diceType, weapon.diceNum)
-    opponent.health -= this.currentRoll
-    console.log(
-      `${this.name} has attacked ${opponent.name} with ${weapon.name} for ${this.currentRoll} damage!`
-    )
-    console.log(`${opponent.name} now has ${opponent.health} health.`)
+    this.outGoingDam = this.currentRoll
+    opponent.health -= this.outGoingDam
   }
 }
 
@@ -109,6 +109,8 @@ class Enemy {
     this.fullHealth = health
     this.currentRoll = 0
     this.mult = mult
+    this.outGoingDam = 0
+    this.chosAttack
   }
   roll(dice, num) {
     this.currentRoll = 0
@@ -119,10 +121,10 @@ class Enemy {
   }
   attack(opponent) {
     let randomIndex = Math.floor(Math.random() * this.attacks.length)
-    let chosAttack = this.attacks[randomIndex]
-    this.roll(chosAttack.diceType, chosAttack.diceNum)
-    let damage = Math.floor(this.currentRoll * this.mult)
-    opponent.health -= damage
+    this.chosAttack = this.attacks[randomIndex]
+    this.roll(this.chosAttack.diceType, this.chosAttack.diceNum)
+    this.outGoingDam = Math.floor(this.currentRoll * this.mult)
+    opponent.health -= this.outGoingDam
   }
 }
 
@@ -156,6 +158,7 @@ const init = (player) => {
   weapon1.innerText = player.weapons[1].name
   weapon2.innerText = player.weapons[2].name
   weapon3.innerText = player.weapons[3].name
+  healthBar.innerText = `Health: ${player.health}`
 }
 
 const flipTurn = () => {
@@ -200,7 +203,7 @@ const equip = (player, i) => {
 
 // Event Listeners
 
-turnStart.addEventListener(`click`, () => {
+start.addEventListener(`click`, () => {
   if (currentPlayerTurn === 1) {
     rollToMove(player1)
   } else if (currentPlayerTurn === -1) {
@@ -252,9 +255,18 @@ const randomFight = (player) => {
   let randomIndex = Math.floor(Math.random() * enemyArr.length)
   let opponent = enemyArr[randomIndex]
   gameText.innerText = `${player.name} has encountered a ${opponent.name}! Prepare to fight!`
-  ////
+  // loop starts here
+  start.innerText = `Attack!`
+  //click
   player.attack(opponent, player.weapons[0])
+  gameText.innerText = `Using the ${player.weapons[0].name}, ${player.name} attacked the ${opponent.name} for ${player.outGoingDam} damage!`
+  start.innerText = `Defend!`
+  //click
   opponent.attack(player)
+  gameText.innerText = `The ${opponent.name} used ${opponent.chosAttack.name}! ${player.name} took ${opponent.outGoingDam} damage!`
+  healthBar.innerText = `Health: ${player.health}`
+  //click
+  // close loop
   opponent.health = opponent.fullHealth
   flipTurn()
 }
