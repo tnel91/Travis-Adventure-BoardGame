@@ -5,6 +5,8 @@ const player1Name = `Zazu`
 const player2Name = `Gumby`
 const enemyArr = []
 const start = document.getElementById(`startButton`)
+const atkBut = document.getElementById(`attackButton`)
+const defBut = document.getElementById(`defendButton`)
 const weapon0 = document.getElementById(`weapon0`)
 const weapon1 = document.getElementById(`weapon1`)
 const weapon2 = document.getElementById(`weapon2`)
@@ -178,7 +180,6 @@ const rollToMove = (player) => {
   }
   player.spaceDiv.classList.remove(`${player.divClass}`)
   player.currentSpace += player.currentRoll
-  console.log(`${player.name} is on ${player.currentSpace}.`)
   if (player.currentSpace >= boardArr.length - 1) {
     player.spaceDiv = document.getElementById(`sq${boardArr.length - 1}`)
     player.spaceDiv.classList.add(`${player.divClass}`)
@@ -201,7 +202,45 @@ const equip = (player, i) => {
   init(player)
 }
 
+// Space Event Logic
+
+const emptySpace = (player) => {
+  // console.log(`${player.name} is in an empty space.`)
+  flipTurn()
+}
+
+const shop = (player) => {
+  console.log(
+    `${player.name} is going shopping! They have ${player.gold} gold.`
+  )
+  flipTurn()
+}
+
+const randomFight = (player) => {
+  let randomIndex = Math.floor(Math.random() * enemyArr.length)
+  let opponent = enemyArr[randomIndex]
+  gameText.innerText = `${player.name} has encountered a ${opponent.name}! Prepare to fight!`
+  // loop starts here
+  //click
+  start.addEventListener(`click`, () => {
+    player.attack(opponent, player.weapons[0])
+    gameText.innerText = `Using the ${player.weapons[0].name}, ${player.name} attacked the ${opponent.name} for ${player.outGoingDam} damage!`
+    start.innerText = `Defend!`
+  })
+  start.innerText = `Attack!`
+  //click
+  opponent.attack(player)
+  gameText.innerText = `The ${opponent.name} used ${opponent.chosAttack.name}! ${player.name} took ${opponent.outGoingDam} damage!`
+  healthBar.innerText = `Health: ${player.health}`
+  //click
+  // close loop
+  opponent.health = opponent.fullHealth
+  flipTurn()
+}
+
 // Event Listeners
+
+init(player1)
 
 start.addEventListener(`click`, () => {
   if (currentPlayerTurn === 1) {
@@ -234,39 +273,3 @@ weapon3.addEventListener(`click`, () => {
     equip(player2, 3)
   }
 })
-
-// Space Event Logic
-
-init(player1)
-
-const emptySpace = (player) => {
-  console.log(`${player.name} is in an empty space.`)
-  flipTurn()
-}
-
-const shop = (player) => {
-  console.log(
-    `${player.name} is going shopping! They have ${player.gold} gold.`
-  )
-  flipTurn()
-}
-
-const randomFight = (player) => {
-  let randomIndex = Math.floor(Math.random() * enemyArr.length)
-  let opponent = enemyArr[randomIndex]
-  gameText.innerText = `${player.name} has encountered a ${opponent.name}! Prepare to fight!`
-  // loop starts here
-  start.innerText = `Attack!`
-  //click
-  player.attack(opponent, player.weapons[0])
-  gameText.innerText = `Using the ${player.weapons[0].name}, ${player.name} attacked the ${opponent.name} for ${player.outGoingDam} damage!`
-  start.innerText = `Defend!`
-  //click
-  opponent.attack(player)
-  gameText.innerText = `The ${opponent.name} used ${opponent.chosAttack.name}! ${player.name} took ${opponent.outGoingDam} damage!`
-  healthBar.innerText = `Health: ${player.health}`
-  //click
-  // close loop
-  opponent.health = opponent.fullHealth
-  flipTurn()
-}
