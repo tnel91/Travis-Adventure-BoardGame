@@ -151,8 +151,10 @@ const player2 = new Player(p2Name, `player2`)
 
 const zombie = new Undead(`Zombie`, 10, 1)
 enemyArr.push(zombie)
+
 const mummy = new Undead(`Mummy`, 15, 1.2)
 enemyArr.push(mummy)
+
 const ghoul = new Undead(`Ghoul`, 20, 1.5)
 enemyArr.push(ghoul)
 
@@ -197,7 +199,7 @@ const rollToMove = (player) => {
     player.spaceDiv = document.getElementById(`sq${player.currentSpace}`)
     player.spaceDiv.classList.add(`${player.divClass}`)
     gameText.innerText = `${player.name} landed on ${
-      boardArr[player.currentSpace].type
+      boardArr[player.currentSpace].phrase
     } space!`
     setTimeout(() => {
       boardArr[player.currentSpace].run(currentPlayer)
@@ -222,7 +224,6 @@ const equip = (player, i) => {
 // Space Event Logic
 
 const emptySpace = (player) => {
-  // console.log(`${player.name} is in an empty space.`)
   flipTurn()
 }
 
@@ -279,6 +280,12 @@ const combatLoop = (player, opponent) => {
 
 fight.disabled = true
 init(player1)
+
+const colorSpaces = () => {
+  for (let i = 0; i < boardArr.length; i++) {
+    boardArr[i]
+  }
+}
 
 start.addEventListener(`click`, () => {
   turnInd.classList.remove(`bounce`)

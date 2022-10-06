@@ -156,6 +156,7 @@
 #sq0 {
   grid-column-start: 4;
   grid-row-start: 20;
+  background-color: yellow;
 }
 
 #sq1{
