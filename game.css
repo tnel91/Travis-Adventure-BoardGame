@@ -1,32 +1,36 @@
 .game {
   display: flex;
+  min-height: 550px;
+  min-width: 550px;
+  max-width: 800px;
 }
 
 .events {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 30%;
   background-color: aqua;
-  border: 1px solid black;
+  border: 2px solid black;
   padding: auto;
 }
 /* ////////////////////////////////// */
 
 .playerInfo {
+  border-bottom: 2px solid black;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 15%;
+  /* text-shadow: 2px 2px black; */
+  font-size: 20px;
 }
 
 #health {
   margin: 10px;
-  font-size: 20px;
 }
 
 #turnInd {
   margin: 10px;
-  font-size: 20px;
 }
 
 
@@ -34,7 +38,6 @@
   animation-name: flash;
   animation-duration: 1s;
   animation-iteration-count: 2;
-  ;
 }
 
 @keyframes flash {
@@ -61,41 +64,43 @@
 
 /* ///////////////////////////////// */
 
-.weaponSelect {
-  border: 1px solid black;
-  height: 5%;
-  display: flex;
-  justify-content: ;
+.equipedWeapon {
+  color: rgb(0, 0, 0);
+  text-align: center;
 }
 
-.equipedWeapon {
-  border: 1px solid black;
-  align-self: flex-start;
+
+.weaponSelect {
+  height: 15%;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
 }
 
 .weapons {
   background-color: rgb(248, 247, 161);
-  max-height: 25px;
-  min-width: 100px;
+  margin: 3px;
+}
+
+.clickNote {
+  font-size: 14px;
+  align-self: center;
+  justify-self: center;
+  background-color: inherit;
 }
 
 /* /////////////////////////////////// */
 
 .textBox {
-  border: 1px solid black;
-  height: 50%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  height: 40%;
   padding: 10px;
-}
-
-.gameText {
-  
 }
 
 /* /////////////////////////////////// */
 
 .buttons {
-  border: 1px solid black;
-  height: 25%;
+  height: 20%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -115,8 +120,8 @@
 
 .board {
   display: grid;
-  height: 550px;
-  width: 550px;
+  /* height: 550px; */
+  width: 70%;
   grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   background-color: rgb(118, 183, 26);
