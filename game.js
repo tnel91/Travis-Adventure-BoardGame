@@ -2,11 +2,12 @@
 
 let currentPlayerTurn = 1
 let currentPlayer
+let currentOpponent
 const p1Name = `Zazu`
 const p2Name = `Gumby`
 const enemyArr = []
 const start = document.getElementById(`startButton`)
-const go = document.getElementById(`goButton`)
+const fight = document.getElementById(`fightButton`)
 // const atkBut = document.getElementById(`attackButton`)
 // const defBut = document.getElementById(`defendButton`)
 const weapon0 = document.getElementById(`weapon0`)
@@ -79,6 +80,7 @@ class Player {
     this.health = 100
     this.fullHealth = 100
     this.gold = 100
+    this.healthPot = 1
     this.outGoingDam = 0
     this.extraRoll = false
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
@@ -164,6 +166,8 @@ const init = (player) => {
   weapon3.innerText = player.weapons[3].name
   healthBar.innerText = `Health: ${player.health}`
   currentPlayer = player
+  fight.disabled = true
+  start.disabled = false
 }
 
 const flipTurn = () => {
@@ -176,6 +180,7 @@ const flipTurn = () => {
 }
 
 const rollToMove = (player) => {
+  start.disabled = true
   if (player.extraRoll === true) {
     player.roll(10, 2)
   } else {
@@ -193,8 +198,9 @@ const rollToMove = (player) => {
     gameText.innerText = `${player.name} landed on a ${
       boardArr[player.currentSpace].type
     } space!`
-    //delay here
-    boardArr[player.currentSpace].run(currentPlayer)
+    setTimeout(() => {
+      boardArr[player.currentSpace].run(currentPlayer)
+    }, 2000)
   }
 }
 
@@ -223,72 +229,12 @@ const shop = (player) => {
   flipTurn()
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-// const randomFightrfzdsf = (player) => {
-//   const promise = new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve()
-//     }, 2000)
-//   })
-
-//   promise.then()
-// }
-
-// const randomFight = async (player) => {
-//   let randomIndex = Math.floor(Math.random() * enemyArr.length)
-//   let opponent = enemyArr[randomIndex]
-//   return await new Promise((resolve) => {
-//     go.addEventListener(`click`, () => {
-//       resolve(playerAttack())
-//     })
-//   })
-//   return await new Promise((resolve) => {
-//     go.addEventListener('click')
-//   })
-// }
-
-/////////////////////////////////////////////////////////////////
-
-// const promise = new Promise((resolve) => {
-//   go.addEventListener(`click`, resolve)
-// })
-
-// const playerAttack = async () => {
-//   return await promise.then(() => {
-//     player.attack(opponent, player.weapons[0])
-//     gameText.innerText = `Using the ${player.weapons[0].name}, ${player.name} attacked the ${opponent.name} for ${player.outGoingDam} damage!`
-//     go.innerText = `Defend!`
-//   })
-// }
-
-// playerAttack()
-
-// const opponentAttack = async () => {
-//   return await promise.then(() => {
-//     opponent.attack(player)
-//     gameText.innerText = `The ${opponent.name} used ${opponent.chosAttack.name}! ${player.name} took ${opponent.outGoingDam} damage!`
-//     healthBar.innerText = `Health: ${player.health}`
-//   })
-// }
-
-// opponentAttack()
-
-////////////////////////////////////////////////////////////
-
 const randomFightStart = (player) => {
-  console.log(`starting fight`)
   let randomIndex = Math.floor(Math.random() * enemyArr.length)
-  let opponent = enemyArr[randomIndex]
-  gameText.innerText = `${player.name} has encountered a ${opponent.name}! Prepare to fight!`
-  go.innerText = `Attack!`
-  ///put combat loop into event listener
-  combatLoop(player, opponent)
+  currentOpponent = enemyArr[randomIndex]
+  gameText.innerText = `${player.name} has encountered a ${currentOpponent.name}! Prepare to fight!`
+  fight.disabled = false
 }
-
-const promise = new Promise((resolve) => {
-  go.addEventListener(`click`, resolve)
-})
 
 const combatLoop = async (player, opponent) => {
   console.log(`entered loop`)
@@ -296,114 +242,21 @@ const combatLoop = async (player, opponent) => {
   let turn = 1
   while (opponent.health > 0) {
     if (turn === 1) {
-      playerAttack(player, opponent)
-      console.log(opponent.health)
+      player.attack(opponent, player.weapons[0])
       turn = turn * -1
     } else if (turn === -1) {
-      playerDefend(player, opponent)
-      console.log(player.health)
+      opponent.attack(player)
       turn = turn * -1
     }
   }
-  console.log(`${opponent.name} has been defeated!`)
-  opponent.health = opponent.fullHealth
-  ///delay here
-  flipTurn()
-}
-
-const playerAttack = async (player, opponent) => {
-  // await promise.then(() => {
-  console.log(`attacked!`)
-  player.attack(opponent, player.weapons[0])
-  gameText.innerText = `Using the ${player.weapons[0].name}, ${player.name} attacked the ${opponent.name} for ${player.outGoingDam} damage!`
-  go.innerText = `Defend!`
-  // return
-  // })
-}
-
-const playerDefend = async (player, opponent) => {
-  // await promise.then(() => {
-  console.log(`defended!`)
-  opponent.attack(player)
-  gameText.innerText = `The ${opponent.name} used ${opponent.chosAttack.name}! ${player.name} took ${opponent.outGoingDam} damage!`
   healthBar.innerText = `Health: ${player.health}`
-  go.innerText = `Attack!`
-  // return
-  // })
+  console.log(`${opponent.name} has been defeated!`)
+  gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
+  setTimeout(() => {
+    opponent.health = opponent.fullHealth
+    flipTurn()
+  }, 3000)
 }
-
-// const randomFight = (player) => {
-//   let randomIndex = Math.floor(Math.random() * enemyArr.length)
-//   let opponent = enemyArr[randomIndex]
-//   let turn = 1
-
-//   gameText.innerText = `${player.name} has encountered a ${opponent.name}! Prepare to fight!`
-//   go.innerText = `Attack!`
-
-//   for (let i = 0; i < 5; i++) {
-//     const promise = new Promise((resolve) => {
-//       go.addEventListener(`click`, resolve)
-//     })
-//     const playerAttack = async () => {
-//       return await promise.then(() => {
-//         console.log(`attacked!`)
-//         player.attack(opponent, player.weapons[0])
-//         gameText.innerText = `Using the ${player.weapons[0].name}, ${player.name} attacked the ${opponent.name} for ${player.outGoingDam} damage!`
-//         go.innerText = `Defend!`
-//       })
-//     }
-//     const opponentAttack = async () => {
-//       return await promise.then(() => {
-//         console.log(`defended!`)
-//         opponent.attack(player)
-//         gameText.innerText = `The ${opponent.name} used ${opponent.chosAttack.name}! ${player.name} took ${opponent.outGoingDam} damage!`
-//         healthBar.innerText = `Health: ${player.health}`
-//         go.innerText = `Attack!`
-//       })
-//     }
-//     if (opponent.health > 0) {
-//       if (turn === 1) {
-//         playerAttack()
-//         turn = turn * -1
-//       } else if (turn === -1) {
-//         opponentAttack()
-//         turn = turn * -1
-//       }
-//     } else if (opponent.health <= 0) {
-//       console.log(`end combat`)
-//       opponent.health = opponent.fullHealth
-//       flipTurn()
-//       return
-//     }
-//   }
-// }
-
-// const combatLoop = async () => {
-//   go.innerText = `Attack!`
-//   console.log(`waiting for attack click`)
-//   return await new Promise(() => {
-//     go.addEventListener(`click`, playerAttack)
-//   })
-//   console.log(`waiting for defend click`)
-//   return await new Promise(() => {
-//     go.addEventListener(`click`, opponentAttack)
-//   })
-// }
-//////////
-// loop starts here
-// if (opponent.health > 0) {
-//   combatLoop()
-// } else if (opponent.health <= 0) {
-//   console.log(`${opponent.name} defeated`)
-// }
-//click
-// close loop
-// opponent.health = opponent.fullHealth
-// flipTurn()
-
-// const onClick = new Promise((resolve) => {
-//   go.addEventListener(`click`, resolve)
-// })
 
 // Event Listeners
 
@@ -413,26 +266,18 @@ start.addEventListener(`click`, () => {
   rollToMove(currentPlayer)
 })
 
+fight.addEventListener(`click`, () => {
+  combatLoop(currentPlayer, currentOpponent)
+})
+
 weapon1.addEventListener(`click`, () => {
-  if (currentPlayerTurn === 1) {
-    equip(player1, 1)
-  } else if (currentPlayerTurn === -1) {
-    equip(player2, 1)
-  }
+  equip(currentPlayer, 1)
 })
 
 weapon2.addEventListener(`click`, () => {
-  if (currentPlayerTurn === 1) {
-    equip(player1, 2)
-  } else if (currentPlayerTurn === -1) {
-    equip(player2, 2)
-  }
+  equip(currentPlayer, 2)
 })
 
 weapon3.addEventListener(`click`, () => {
-  if (currentPlayerTurn === player1) {
-    equip(player1, 3)
-  } else if (currentPlayerTurn === player2) {
-    equip(player2, 3)
-  }
+  equip(currentPlayer, 3)
 })
