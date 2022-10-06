@@ -166,11 +166,10 @@ const init = (player) => {
   weapon3.innerText = player.weapons[3].name
   healthBar.innerText = `Health: ${player.health}`
   currentPlayer = player
-  fight.disabled = true
-  start.disabled = false
 }
 
 const flipTurn = () => {
+  start.disabled = false
   currentPlayerTurn = currentPlayerTurn * -1
   if (currentPlayerTurn === 1) {
     init(player1)
@@ -206,7 +205,10 @@ const rollToMove = (player) => {
 
 const gameWin = (player) => {
   console.log(`${player.name} has won the game!`)
-  flipTurn()
+  gameText.innerText = `${player.name} has won the game! Congratulations! Returning to title screen in 10 seconds...`
+  setTimeout(() => {
+    window.location.href = `./index.html`
+  }, 10000)
 }
 
 const equip = (player, i) => {
@@ -237,8 +239,6 @@ const randomFightStart = (player) => {
 }
 
 const combatLoop = async (player, opponent) => {
-  console.log(`entered loop`)
-  console.log(opponent.health)
   let turn = 1
   while (opponent.health > 0) {
     if (turn === 1) {
@@ -250,8 +250,8 @@ const combatLoop = async (player, opponent) => {
     }
   }
   healthBar.innerText = `Health: ${player.health}`
-  console.log(`${opponent.name} has been defeated!`)
   gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
+  fight.disabled = true
   setTimeout(() => {
     opponent.health = opponent.fullHealth
     flipTurn()
@@ -260,6 +260,7 @@ const combatLoop = async (player, opponent) => {
 
 // Event Listeners
 
+fight.disabled = true
 init(player1)
 
 start.addEventListener(`click`, () => {
