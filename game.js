@@ -39,7 +39,7 @@ const silverSword = {
 }
 
 const twinDaggers = {
-  name: `Pair of Daggers`,
+  name: `Daggers`,
   diceType: 4,
   diceNum: 2
 }
@@ -86,7 +86,7 @@ class Player {
     this.spaceDiv = document.getElementById(`sq${this.currentSpace}`)
     this.divClass = divClass
     this.inventory = []
-    this.weapons = [ironSword, unarmed, unarmed, unarmed]
+    this.weapons = [ironSword, twinDaggers, magicMissle, fireball]
   }
   roll(dice, num) {
     this.currentRoll = 0

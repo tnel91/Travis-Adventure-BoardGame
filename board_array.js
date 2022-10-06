@@ -29,11 +29,11 @@ const boardArr = [
     }
   },
   {
-    index: 4,
-    phrase: `a random fight`,
-    class: `ranFight`,
+    index: 3,
+    phrase: `a shop`,
+    class: `shop`,
     run: (player) => {
-      randomFightStart(player)
+      shop(player)
     }
   },
   {
@@ -110,26 +110,26 @@ const boardArr = [
   },
   {
     index: 14,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 15,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 16,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
@@ -166,18 +166,18 @@ const boardArr = [
   },
   {
     index: 21,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a shop`,
+    class: `shop`,
     run: (player) => {
-      emptySpace(player)
+      shop(player)
     }
   },
   {
     index: 22,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a shop`,
+    class: `shop`,
     run: (player) => {
-      emptySpace(player)
+      shop(player)
     }
   },
   {
@@ -214,34 +214,34 @@ const boardArr = [
   },
   {
     index: 27,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
-    index: 28,
-    phrase: `an empty`,
-    class: `empty`,
+    iindex: 28,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 29,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 30,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
@@ -302,18 +302,18 @@ const boardArr = [
   },
   {
     index: 38,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 39,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
@@ -342,42 +342,42 @@ const boardArr = [
   },
   {
     index: 43,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 44,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 45,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 46,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a shop`,
+    class: `shop`,
     run: (player) => {
-      emptySpace(player)
+      shop(player)
     }
   },
   {
     index: 47,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a shop`,
+    class: `shop`,
     run: (player) => {
-      emptySpace(player)
+      shop(player)
     }
   },
   {
@@ -438,42 +438,39 @@ const boardArr = [
   },
   {
     index: 55,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 56,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 57,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 58,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 59,
-    phrase: `an empty`,
-    class: `empty`,
-    run: (player) => {
-      emptySpace(player)
-    }
+    phrase: `you win`,
+    class: `finish`
   }
 ]

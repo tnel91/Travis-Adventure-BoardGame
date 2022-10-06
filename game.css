@@ -145,7 +145,11 @@
 }
 
 .ranFight {
-background-color: red;
+background-color: rgb(125, 0, 0);
+}
+
+.finish {
+  background-color: yellow;
 }
 
 .player1 {
@@ -172,7 +176,6 @@ background-color: red;
 #sq0 {
   grid-column-start: 4;
   grid-row-start: 20;
-  background-color: yellow;
 }
 
 #sq1{
