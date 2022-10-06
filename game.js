@@ -160,7 +160,7 @@ enemyArr.push(ghoul)
 
 const init = (player) => {
   turnInd.innerText = `${player.name}'s Turn!`
-  weapon0.innerText = `Equipped Weapon: ${player.weapons[0].name} (Rolls ${player.weapons[0].diceNum} x d${player.weapons[0].diceType})`
+  weapon0.innerHTML = `<b>Equipped Weapon:</b> ${player.weapons[0].name} (Rolls ${player.weapons[0].diceNum} x d${player.weapons[0].diceType})`
   weapon1.innerText = player.weapons[1].name
   weapon2.innerText = player.weapons[2].name
   weapon3.innerText = player.weapons[3].name
@@ -169,6 +169,7 @@ const init = (player) => {
 }
 
 const flipTurn = () => {
+  turnInd.classList.add(`grow`)
   start.disabled = false
   gameText.innerText = `Click Roll to Move!`
   currentPlayerTurn = currentPlayerTurn * -1
@@ -184,7 +185,7 @@ const rollToMove = (player) => {
   if (player.extraRoll === true) {
     player.roll(10, 2)
   } else {
-    player.roll(4, 1)
+    player.roll(20, 1)
   }
   player.spaceDiv.classList.remove(`${player.divClass}`)
   player.currentSpace += player.currentRoll
@@ -195,7 +196,7 @@ const rollToMove = (player) => {
   } else {
     player.spaceDiv = document.getElementById(`sq${player.currentSpace}`)
     player.spaceDiv.classList.add(`${player.divClass}`)
-    gameText.innerText = `${player.name} landed on a ${
+    gameText.innerText = `${player.name} landed on ${
       boardArr[player.currentSpace].type
     } space!`
     setTimeout(() => {
@@ -253,6 +254,11 @@ const combatLoop = (player, opponent) => {
       }
     }
     healthBar.innerText = `Health: ${player.health}`
+    healthBar.classList.add(`flash`)
+    if (player.health <= 0) {
+      gameText.innerText = `${player.name} has been defeated by the ${opponent.name}! Moving ${player.name} to last checkpoint.`
+      // add logic for moving player back here
+    }
     gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
     fight.disabled = true
     player.roll(6, 1)
@@ -275,6 +281,8 @@ fight.disabled = true
 init(player1)
 
 start.addEventListener(`click`, () => {
+  turnInd.classList.remove(`grow`)
+  healthBar.classList.remove(`flash`)
   rollToMove(currentPlayer)
 })
 

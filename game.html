@@ -72,19 +72,23 @@
       <div class = "square" id = "sq59">59</div>
     </section>
     <section class = "events">
-      <button id = "startButton">Roll to Move</button>
-      <button id = "fightButton">Fight</button>
-      <p id = "turnInd">player.name</p>
+      <div class = "playerInfo">
+        <p id = "turnInd">player.name</p>
+        <p id = "health">health</p>
+      </div>
       <div class = "weaponSelect">
-        <p class = "weapons" id = "weapon0">weapon 0</p>
+        <p class = "equipedWeapon" id = "weapon0">weapon 0</p>
         <button class = "weapons" id = "weapon1">weapon 1</button>
         <button class = "weapons" id = "weapon2">weapon 2</button>
         <button class = "weapons" id = "weapon3">weapon 3</button>
       </div>
       <div class = "textBox">
-        <p id = "gameText">Lorem Ipsum</p>
+        <p id = "gameText">Click Roll to Move!</p>
       </div>
-      <p id = "health">health</p>
+      <div class = "buttons">
+        <button id = "startButton">Roll to Move</button>
+        <button id = "fightButton">Fight</button>
+      </div>
     </section>
   </div>
   <script type="text/javascript" src="./game.js"></script>
