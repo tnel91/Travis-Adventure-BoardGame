@@ -8,7 +8,7 @@ const boardArr = [
     index: 1,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -16,7 +16,7 @@ const boardArr = [
     index: 2,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -24,7 +24,7 @@ const boardArr = [
     index: 3,
     phrase: `a shop`,
     class: `shop`,
-    run: function (player) {
+    run: (player) => {
       shop(player)
     }
   },
@@ -32,7 +32,7 @@ const boardArr = [
     index: 4,
     phrase: `a random fight`,
     class: `ranFight`,
-    run: function (player) {
+    run: (player) => {
       randomFightStart(player)
     }
   },
@@ -40,7 +40,7 @@ const boardArr = [
     index: 5,
     phrase: `a random fight`,
     class: `ranFight`,
-    run: function (player) {
+    run: (player) => {
       randomFightStart(player)
     }
   },
@@ -48,7 +48,7 @@ const boardArr = [
     index: 6,
     phrase: `a random fight`,
     class: `ranFight`,
-    run: function (player) {
+    run: (player) => {
       randomFightStart(player)
     }
   },
@@ -56,7 +56,7 @@ const boardArr = [
     index: 7,
     phrase: `a random fight`,
     class: `ranFight`,
-    run: function (player) {
+    run: (player) => {
       randomFightStart(player)
     }
   },
@@ -64,7 +64,7 @@ const boardArr = [
     index: 8,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -72,7 +72,7 @@ const boardArr = [
     index: 9,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -80,7 +80,7 @@ const boardArr = [
     index: 10,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -88,7 +88,7 @@ const boardArr = [
     index: 11,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -96,7 +96,7 @@ const boardArr = [
     index: 12,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -104,7 +104,7 @@ const boardArr = [
     index: 13,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -112,7 +112,7 @@ const boardArr = [
     index: 14,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -120,7 +120,7 @@ const boardArr = [
     index: 15,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -128,7 +128,7 @@ const boardArr = [
     index: 16,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -136,7 +136,7 @@ const boardArr = [
     index: 17,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -144,7 +144,7 @@ const boardArr = [
     index: 18,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -152,7 +152,7 @@ const boardArr = [
     index: 19,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -160,7 +160,7 @@ const boardArr = [
     index: 20,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -168,7 +168,7 @@ const boardArr = [
     index: 21,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -176,7 +176,7 @@ const boardArr = [
     index: 22,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -184,7 +184,7 @@ const boardArr = [
     index: 23,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -192,7 +192,7 @@ const boardArr = [
     index: 24,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -200,7 +200,7 @@ const boardArr = [
     index: 25,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -208,7 +208,7 @@ const boardArr = [
     index: 26,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -216,7 +216,7 @@ const boardArr = [
     index: 27,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -224,7 +224,7 @@ const boardArr = [
     index: 28,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -232,7 +232,7 @@ const boardArr = [
     index: 29,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -240,7 +240,7 @@ const boardArr = [
     index: 30,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -248,7 +248,7 @@ const boardArr = [
     index: 31,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -256,7 +256,7 @@ const boardArr = [
     index: 32,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -264,7 +264,7 @@ const boardArr = [
     index: 33,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -272,7 +272,7 @@ const boardArr = [
     index: 34,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -280,7 +280,7 @@ const boardArr = [
     index: 35,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -288,7 +288,7 @@ const boardArr = [
     index: 36,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -296,7 +296,7 @@ const boardArr = [
     index: 37,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -304,7 +304,7 @@ const boardArr = [
     index: 38,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -312,7 +312,7 @@ const boardArr = [
     index: 39,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -320,7 +320,7 @@ const boardArr = [
     index: 40,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -328,7 +328,7 @@ const boardArr = [
     index: 41,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -336,7 +336,7 @@ const boardArr = [
     index: 42,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -344,7 +344,7 @@ const boardArr = [
     index: 43,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -352,7 +352,7 @@ const boardArr = [
     index: 44,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -360,7 +360,7 @@ const boardArr = [
     index: 45,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -368,7 +368,7 @@ const boardArr = [
     index: 46,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -376,7 +376,7 @@ const boardArr = [
     index: 47,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -384,7 +384,7 @@ const boardArr = [
     index: 48,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -392,7 +392,7 @@ const boardArr = [
     index: 49,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -400,7 +400,7 @@ const boardArr = [
     index: 50,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -408,7 +408,7 @@ const boardArr = [
     index: 51,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -416,7 +416,7 @@ const boardArr = [
     index: 52,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -424,7 +424,7 @@ const boardArr = [
     index: 53,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -432,7 +432,7 @@ const boardArr = [
     index: 54,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -440,7 +440,7 @@ const boardArr = [
     index: 55,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -448,7 +448,7 @@ const boardArr = [
     index: 56,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -456,7 +456,7 @@ const boardArr = [
     index: 57,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -464,7 +464,7 @@ const boardArr = [
     index: 58,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   },
@@ -472,7 +472,7 @@ const boardArr = [
     index: 59,
     phrase: `an empty`,
     class: `empty`,
-    run: function (player) {
+    run: (player) => {
       emptySpace(player)
     }
   }

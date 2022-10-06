@@ -278,15 +278,6 @@ const combatLoop = (player, opponent) => {
 
 // Event Listeners
 
-fight.disabled = true
-init(player1)
-
-const colorSpaces = () => {
-  for (let i = 0; i < boardArr.length; i++) {
-    boardArr[i]
-  }
-}
-
 start.addEventListener(`click`, () => {
   turnInd.classList.remove(`bounce`)
   healthBar.classList.remove(`flash`)
@@ -308,3 +299,16 @@ weapon2.addEventListener(`click`, () => {
 weapon3.addEventListener(`click`, () => {
   equip(currentPlayer, 3)
 })
+
+const colorSpaces = () => {
+  for (let i = 0; i < boardArr.length; i++) {
+    document.getElementById(`sq${i}`).classList.add(boardArr[i].class)
+  }
+}
+
+fight.disabled = true
+init(player1)
+
+setInterval(() => {
+  colorSpaces()
+}, 1)
