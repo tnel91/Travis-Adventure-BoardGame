@@ -169,7 +169,7 @@ const init = (player) => {
 }
 
 const flipTurn = () => {
-  turnInd.classList.add(`grow`)
+  turnInd.classList.add(`bounce`)
   start.disabled = false
   gameText.innerText = `Click Roll to Move!`
   currentPlayerTurn = currentPlayerTurn * -1
@@ -185,7 +185,7 @@ const rollToMove = (player) => {
   if (player.extraRoll === true) {
     player.roll(10, 2)
   } else {
-    player.roll(20, 1)
+    player.roll(4, 1)
   }
   player.spaceDiv.classList.remove(`${player.divClass}`)
   player.currentSpace += player.currentRoll
@@ -281,7 +281,7 @@ fight.disabled = true
 init(player1)
 
 start.addEventListener(`click`, () => {
-  turnInd.classList.remove(`grow`)
+  turnInd.classList.remove(`bounce`)
   healthBar.classList.remove(`flash`)
   rollToMove(currentPlayer)
 })
