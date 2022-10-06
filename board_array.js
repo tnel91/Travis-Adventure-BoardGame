@@ -28,28 +28,28 @@ const boardArr = [
     index: 4,
     type: `random fight`,
     run: function (player) {
-      randomFight(player)
+      randomFightStart(player)
     }
   },
   {
     index: 5,
     type: `random fight`,
     run: function (player) {
-      randomFight(player)
+      randomFightStart(player)
     }
   },
   {
     index: 6,
     type: `random fight`,
     run: function (player) {
-      randomFight(player)
+      randomFightStart(player)
     }
   },
   {
     index: 7,
     type: `random fight`,
     run: function (player) {
-      randomFight(player)
+      randomFightStart(player)
     }
   },
   {
