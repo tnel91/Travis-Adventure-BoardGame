@@ -170,6 +170,7 @@ const init = (player) => {
 
 const flipTurn = () => {
   start.disabled = false
+  gameText.innerText = `Click Roll to Move!`
   currentPlayerTurn = currentPlayerTurn * -1
   if (currentPlayerTurn === 1) {
     init(player1)
@@ -199,7 +200,7 @@ const rollToMove = (player) => {
     } space!`
     setTimeout(() => {
       boardArr[player.currentSpace].run(currentPlayer)
-    }, 2000)
+    }, 1000)
   }
 }
 
@@ -234,28 +235,38 @@ const shop = (player) => {
 const randomFightStart = (player) => {
   let randomIndex = Math.floor(Math.random() * enemyArr.length)
   currentOpponent = enemyArr[randomIndex]
-  gameText.innerText = `${player.name} has encountered a ${currentOpponent.name}! Prepare to fight!`
+  gameText.innerText = `${player.name} has encountered a ${currentOpponent.name}! Choose your weapon and prepare to fight!`
   fight.disabled = false
 }
 
-const combatLoop = async (player, opponent) => {
+const combatLoop = (player, opponent) => {
   let turn = 1
-  while (opponent.health > 0) {
-    if (turn === 1) {
-      player.attack(opponent, player.weapons[0])
-      turn = turn * -1
-    } else if (turn === -1) {
-      opponent.attack(player)
-      turn = turn * -1
-    }
-  }
-  healthBar.innerText = `Health: ${player.health}`
-  gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
-  fight.disabled = true
+  gameText.innerText = `*** Combat Noises ***`
   setTimeout(() => {
-    opponent.health = opponent.fullHealth
-    flipTurn()
-  }, 3000)
+    while (opponent.health > 0) {
+      if (turn === 1) {
+        player.attack(opponent, player.weapons[0])
+        turn = turn * -1
+      } else if (turn === -1) {
+        opponent.attack(player)
+        turn = turn * -1
+      }
+    }
+    healthBar.innerText = `Health: ${player.health}`
+    gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
+    fight.disabled = true
+    player.roll(6, 1)
+    if (player.currentRoll === 6) {
+      player.healthPot += 1
+      setTimeout(() => {
+        gameText.innerText = `${player.name} found a health potion!`
+      }, 2000)
+    }
+    setTimeout(() => {
+      opponent.health = opponent.fullHealth
+      flipTurn()
+    }, 4000)
+  }, 1500)
 }
 
 // Event Listeners
