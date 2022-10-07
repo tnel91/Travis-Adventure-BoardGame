@@ -1,7 +1,6 @@
 body {
   background-color: rgb(147, 210, 255);
   font-family: 'Alice', serif;
-
 }
 
 .game {
@@ -9,6 +8,7 @@ body {
   min-height: 650px;
   min-width: 550px;
   max-width: 900px;
+  margin: 20px;
 }
 
 .events {

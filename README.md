@@ -41,7 +41,17 @@ Movement will be determined by dice roll, and events will be triggered by player
 
 ### **_Screenshots_**
 
-text
+### Landing Page
+
+---
+
+![Imgur](https://i.imgur.com/WbDxHJx.png)
+
+### Game Page
+
+---
+
+![Imgur](https://i.imgur.com/suoTRCM.png)
 
 ---
 
