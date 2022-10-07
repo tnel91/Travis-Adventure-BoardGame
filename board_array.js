@@ -262,10 +262,10 @@ const boardArr = [
   },
   {
     index: 33,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `the inn`,
+    class: `respawn`,
     run: (player) => {
-      emptySpace(player)
+      inn(player)
     }
   },
   {

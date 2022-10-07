@@ -169,6 +169,10 @@ body {
 background-color: rgb(125, 0, 0);
 }
 
+.respawn {
+  background-color: aqua;
+}
+
 .finish {
   background-color: yellow;
 }

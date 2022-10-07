@@ -75,8 +75,8 @@ class Player {
     this.name = name
     this.currentSpace = 0
     this.currentRoll = 0
-    this.health = 10
-    this.fullHealth = 100
+    this.health = 50
+    this.fullHealth = 50
     this.gold = 100
     this.healthPot = 1
     this.outGoingDam = 0
@@ -172,11 +172,11 @@ const init = (player) => {
   currentPlayer = player
 }
 
-const flipTurn = () => {
+const nextTurn = () => {
   turnInd.classList.add(`bounce`)
   start.disabled = false
   gameText.innerText = `Click Roll to Move!`
-  currentPlayerTurn = currentPlayerTurn * -1
+
   if (currentPlayerTurn === 1) {
     init(player1)
   } else if (currentPlayerTurn === -1) {
@@ -225,11 +225,18 @@ const equip = (player, i) => {
 // Space Event Logic
 
 const emptySpace = (player) => {
-  flipTurn()
+  currentPlayerTurn = currentPlayerTurn * -1
+  nextTurn()
 }
 
 const shop = (player) => {
-  flipTurn()
+  currentPlayerTurn = currentPlayerTurn * -1
+  nextTurn()
+}
+
+const inn = (player) => {
+  currentPlayerTurn = currentPlayerTurn * -1
+  nextTurn()
 }
 
 const randomFightStart = (player) => {
@@ -272,12 +279,14 @@ const combatLoop = (player, opponent) => {
         }, 2000)
         setTimeout(() => {
           opponent.health = opponent.fullHealth
-          flipTurn()
+          currentPlayerTurn = currentPlayerTurn * -1
+          nextTurn()
         }, 4000)
       } else {
         setTimeout(() => {
           opponent.health = opponent.fullHealth
-          flipTurn()
+          currentPlayerTurn = currentPlayerTurn * -1
+          nextTurn()
         }, 2000)
       }
     }
@@ -301,8 +310,10 @@ const respawn = (player) => {
       healthBar.innerText = `Health: ${player.health}`
       healthBar.classList.add(`flash`)
       setTimeout(() => {
-        flipTurn()
+        currentPlayerTurn = currentPlayerTurn * -1
+        nextTurn()
       }, 3000)
+      return
     }
   }
 }
