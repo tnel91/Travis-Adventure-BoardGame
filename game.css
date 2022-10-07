@@ -84,6 +84,10 @@ body {
   margin: 3px;
 }
 
+.weapons:hover {
+  background-color: rgb(228, 196, 126);
+}
+
 .clickNote {
   font-size: 14px;
   align-self: center;
@@ -116,11 +120,19 @@ body {
   width: 80px;
 }
 
+#startButton:hover {
+  background-color: rgb(228, 196, 126);
+}
+
 #fightButton {
   background-color: rgb(248, 247, 161);
   font-family: 'Alice', serif;
   height: 45px;
   width: 80px;
+}
+
+#fightButton:hover {
+  background-color: rgb(228, 196, 126);
 }
 
 /* ///////////////////////////////////// */
