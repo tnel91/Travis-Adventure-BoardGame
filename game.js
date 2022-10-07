@@ -254,22 +254,28 @@ const combatLoop = (player, opponent) => {
     }
     healthBar.innerText = `Health: ${player.health}`
     healthBar.classList.add(`flash`)
+    fight.disabled = true
     if (player.health <= 0) {
       gameText.innerText = `${player.name} has been defeated by the ${opponent.name}! Moving ${player.name} to last checkpoint.`
+    } else {
+      gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
+      player.roll(6, 1)
+      if (player.currentRoll === 6) {
+        player.healthPot += 1
+        setTimeout(() => {
+          gameText.innerText = `${player.name} found a health potion!`
+        }, 2000)
+        setTimeout(() => {
+          opponent.health = opponent.fullHealth
+          flipTurn()
+        }, 4000)
+      } else {
+        setTimeout(() => {
+          opponent.health = opponent.fullHealth
+          flipTurn()
+        }, 2000)
+      }
     }
-    gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
-    fight.disabled = true
-    player.roll(6, 1)
-    if (player.currentRoll === 6) {
-      player.healthPot += 1
-      setTimeout(() => {
-        gameText.innerText = `${player.name} found a health potion!`
-      }, 1500)
-    }
-    setTimeout(() => {
-      opponent.health = opponent.fullHealth
-      flipTurn()
-    }, 3000)
   }, 1500)
 }
 
