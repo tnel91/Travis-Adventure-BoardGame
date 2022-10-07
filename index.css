@@ -1,3 +1,40 @@
 body {
-  background-color: aqua;
+  background-color: bisque;
+  text-align: center;
+  margin: 100px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+section {
+justify-content: left;
+}
+
+p {
+  text-align: left;
+}
+
+button {
+  /* background-color: red; */
+  font-size: 40px;
+  height: 50px;
+  width: 300px;
+  margin: 50px;
+}
+
+.rainbow {
+  animation-name: rainbow;
+  animation-duration: 4;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainbow {
+  from {background-color: red;}
+  /* 20% {background-color: orange;}
+  40% {background-color: yellow;}
+  60% {background-color: blue;}
+  80% {background-color: indigo;} */
+  to {background-color: violet;}
 }

@@ -8,8 +8,6 @@ const p2Name = `Gumby`
 const enemyArr = []
 const start = document.getElementById(`startButton`)
 const fight = document.getElementById(`fightButton`)
-// const atkBut = document.getElementById(`attackButton`)
-// const defBut = document.getElementById(`defendButton`)
 const weapon0 = document.getElementById(`weapon0`)
 const weapon1 = document.getElementById(`weapon1`)
 const weapon2 = document.getElementById(`weapon2`)
@@ -93,7 +91,6 @@ class Player {
     for (let i = 0; i < num; i++) {
       this.currentRoll += Math.ceil(Math.random() * dice)
     }
-    console.log(`${this.name} rolled a ${this.currentRoll}`)
   }
   pickupItem(item) {
     this.inventory.push(item)
@@ -123,7 +120,6 @@ class Enemy {
     for (let i = 0; i < num; i++) {
       this.currentRoll += Math.ceil(Math.random() * dice)
     }
-    console.log(`${this.name} rolled a ${this.currentRoll}`)
   }
   attack(opponent) {
     let randomIndex = Math.floor(Math.random() * this.attacks.length)
@@ -160,6 +156,12 @@ enemyArr.push(ghoul)
 
 // Game Functions
 
+const colorSpaces = () => {
+  for (let i = 0; i < boardArr.length; i++) {
+    document.getElementById(`sq${i}`).classList.add(boardArr[i].class)
+  }
+}
+
 const init = (player) => {
   turnInd.innerText = `${player.name}'s Turn!`
   weapon0.innerHTML = `<b>Equipped Weapon:</b> ${player.weapons[0].name} (Rolls ${player.weapons[0].diceNum} x d${player.weapons[0].diceType})`
@@ -187,7 +189,7 @@ const rollToMove = (player) => {
   if (player.extraRoll === true) {
     player.roll(10, 2)
   } else {
-    player.roll(4, 1)
+    player.roll(10, 1)
   }
   player.spaceDiv.classList.remove(`${player.divClass}`)
   player.currentSpace += player.currentRoll
@@ -203,12 +205,11 @@ const rollToMove = (player) => {
     } space!`
     setTimeout(() => {
       boardArr[player.currentSpace].run(currentPlayer)
-    }, 1000)
+    }, 1500)
   }
 }
 
 const gameWin = (player) => {
-  console.log(`${player.name} has won the game!`)
   gameText.innerText = `${player.name} has won the game! Congratulations! Returning to title screen in 10 seconds...`
   setTimeout(() => {
     window.location.href = `./index.html`
@@ -228,9 +229,6 @@ const emptySpace = (player) => {
 }
 
 const shop = (player) => {
-  console.log(
-    `${player.name} is going shopping! They have ${player.gold} gold.`
-  )
   flipTurn()
 }
 
@@ -258,7 +256,6 @@ const combatLoop = (player, opponent) => {
     healthBar.classList.add(`flash`)
     if (player.health <= 0) {
       gameText.innerText = `${player.name} has been defeated by the ${opponent.name}! Moving ${player.name} to last checkpoint.`
-      // add logic for moving player back here
     }
     gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
     fight.disabled = true
@@ -267,12 +264,12 @@ const combatLoop = (player, opponent) => {
       player.healthPot += 1
       setTimeout(() => {
         gameText.innerText = `${player.name} found a health potion!`
-      }, 2000)
+      }, 1500)
     }
     setTimeout(() => {
       opponent.health = opponent.fullHealth
       flipTurn()
-    }, 4000)
+    }, 3000)
   }, 1500)
 }
 
@@ -299,12 +296,6 @@ weapon2.addEventListener(`click`, () => {
 weapon3.addEventListener(`click`, () => {
   equip(currentPlayer, 3)
 })
-
-const colorSpaces = () => {
-  for (let i = 0; i < boardArr.length; i++) {
-    document.getElementById(`sq${i}`).classList.add(boardArr[i].class)
-  }
-}
 
 fight.disabled = true
 init(player1)

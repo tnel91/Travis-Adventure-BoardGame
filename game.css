@@ -1,3 +1,7 @@
+body {
+  background-color: bisque;
+}
+
 .game {
   display: flex;
   min-height: 550px;
@@ -41,9 +45,9 @@
 }
 
 @keyframes flash {
-  0% {color: black}
-  50% {color: red}
-  100% {color: black}
+  0% {color: black;}
+  50% {color: red;}
+  100% {color: black;}
 }
 
 .bounce {
