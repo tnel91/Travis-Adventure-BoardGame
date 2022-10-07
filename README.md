@@ -4,7 +4,7 @@
 
 ### By: Travis Nelson
 
-#### [GitHub](https://github.com/tnel91/Travis-Adventure-BoardGame) | [LinkedIn](https://www.linkedin.com/in/tnelson2013/) | [Trello](https://trello.com/b/41uYwWHy/travis-adventureland-boardgame) | [Surge](busy-thread.surge.sh)
+#### [GitHub](https://github.com/tnel91/Travis-Adventure-BoardGame) | [LinkedIn](https://www.linkedin.com/in/tnelson2013/) | [Trello](https://trello.com/b/41uYwWHy/travis-adventureland-boardgame) | [Surge](https://busy-thread.surge.sh/game.html)
 
 ---
 
