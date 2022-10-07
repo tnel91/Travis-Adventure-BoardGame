@@ -75,7 +75,7 @@ class Player {
     this.name = name
     this.currentSpace = 0
     this.currentRoll = 0
-    this.health = 100
+    this.health = 10
     this.fullHealth = 100
     this.gold = 100
     this.healthPot = 1
@@ -257,6 +257,11 @@ const combatLoop = (player, opponent) => {
     fight.disabled = true
     if (player.health <= 0) {
       gameText.innerText = `${player.name} has been defeated by the ${opponent.name}! Moving ${player.name} to last checkpoint.`
+      setTimeout(() => {
+        healthBar.classList.remove(`flash`)
+        opponent.health = opponent.fullHealth
+        respawn(player)
+      }, 3000)
     } else {
       gameText.innerText = `${player.name} has defeated the ${opponent.name}!`
       player.roll(6, 1)
@@ -277,6 +282,29 @@ const combatLoop = (player, opponent) => {
       }
     }
   }, 1500)
+}
+
+const respawn = (player) => {
+  for (let i = boardArr.length - 1; i > -1; i--) {
+    if (
+      (boardArr[i].class === `respawn` || boardArr[i].class === `start`) &&
+      boardArr[i].index < player.currentSpace
+    ) {
+      player.spaceDiv.classList.remove(`${player.divClass}`)
+      player.currentSpace = i
+      player.spaceDiv = document.getElementById(`sq${player.currentSpace}`)
+      player.spaceDiv.classList.add(`${player.divClass}`)
+      gameText.innerText = `Respawing at ${
+        boardArr[player.currentSpace].phrase
+      } with full health.`
+      player.health = player.fullHealth
+      healthBar.innerText = `Health: ${player.health}`
+      healthBar.classList.add(`flash`)
+      setTimeout(() => {
+        flipTurn()
+      }, 3000)
+    }
+  }
 }
 
 // Event Listeners

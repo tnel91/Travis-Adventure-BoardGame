@@ -1,6 +1,7 @@
 const boardArr = [
   {
     index: 0,
+    phrase: `the start`,
     class: `start`
   },
   {
