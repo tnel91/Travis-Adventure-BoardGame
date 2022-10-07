@@ -1,7 +1,8 @@
 body {
-  background-color: bisque;
+  background-color: rgb(147, 210, 255);
   text-align: center;
   margin: 100px;
+  font-family: 'Alice', serif;
 }
 
 h1 {
@@ -18,6 +19,7 @@ footer {
 
 button {
   /* background-color: red; */
+  font-family: 'Alice', serif;
   font-size: 40px;
   height: 50px;
   width: 300px;
