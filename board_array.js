@@ -1,8 +1,7 @@
 const boardArr = [
   {
     index: 0,
-    class: `start`,
-    phrase: `start`
+    class: `start`
   },
   {
     index: 1,
@@ -78,18 +77,18 @@ const boardArr = [
   },
   {
     index: 10,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 11,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
@@ -158,10 +157,10 @@ const boardArr = [
   },
   {
     index: 20,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
@@ -270,18 +269,18 @@ const boardArr = [
   },
   {
     index: 34,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {
     index: 35,
-    phrase: `an empty`,
-    class: `empty`,
+    phrase: `a random fight`,
+    class: `ranFight`,
     run: (player) => {
-      emptySpace(player)
+      randomFightStart(player)
     }
   },
   {

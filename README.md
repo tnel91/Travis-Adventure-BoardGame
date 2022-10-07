@@ -8,11 +8,40 @@
 
 ---
 
-## **_Description_**
+### **_Description_**
 
 The goal of this project is to create a a simple browser based fantasy-adventure board game similar to CandyLand in structure. It will be built for two players and feature a linear path through the game. Players will be able to name their characters, and the game will track basic player-stats, such as health and held items. A player wins when they reach the end of the path.
 
 Movement will be determined by dice roll, and events will be triggered by players landing on certain spaces. These events can be beneficial or a hinderance to the player. Events will play out in a text based format.
+
+---
+
+### **_Technologies Used_**
+
+- Visual Studio Code
+- Git/Github
+- Gimp
+
+---
+
+### **_Getting Started_**
+
+1. Open index.html
+2. Click "Play"
+3. Click "Roll to Move" to roll the dice and move Player 1's game piece.
+4. Your equipped weapon is listed near the top right corner of the page. Click the buttons below it to change your weapon.
+5. If you land on a red space, you will enter combat.
+
+   - Click "Fight" to initiate combat, which plays out automatically.
+
+6. After the outcome of any space, the turn ends and players automatically switch.
+7. First player to reach the end wins!
+
+---
+
+### **_Screenshots_**
+
+text
 
 ---
 
@@ -38,7 +67,7 @@ Movement will be determined by dice roll, and events will be triggered by player
 
 ---
 
-### **_Getting Started_**
+### **_Guidelines for Project_**
 
 #### **HTML and CSS**
 
