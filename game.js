@@ -49,7 +49,7 @@ const greatSword = {
 }
 
 const magicMissle = {
-  name: `Magic Missle`,
+  name: `Magic Missile`,
   diceType: 4,
   diceNum: 3
 }
@@ -176,7 +176,6 @@ const nextTurn = () => {
   turnInd.classList.add(`bounce`)
   start.disabled = false
   gameText.innerText = `Click Roll to Move!`
-
   if (currentPlayerTurn === 1) {
     init(player1)
   } else if (currentPlayerTurn === -1) {
@@ -297,7 +296,7 @@ const respawn = (player) => {
   for (let i = boardArr.length - 1; i > -1; i--) {
     if (
       (boardArr[i].class === `respawn` || boardArr[i].class === `start`) &&
-      boardArr[i].index < player.currentSpace
+      i < player.currentSpace
     ) {
       player.spaceDiv.classList.remove(`${player.divClass}`)
       player.currentSpace = i
